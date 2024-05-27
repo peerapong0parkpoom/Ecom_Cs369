@@ -1,0 +1,90 @@
+
+body.register-page-body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.register-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group-reg {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group-reg label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group-reg input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-button, .cancel-button {
+    width: 48%;
+    padding: 10px;
+    background-color: #dd5757;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cancel-button {
+    background-color: #ccc;
+}
+
+.signup-button:hover {
+    background-color: #c04d4d;
+}
+
+.cancel-button:hover {
+    background-color: #b0b0b0;
+}
+
+button + button {
+    margin-left: 4%;
+}
+
+.register-container p {
+    margin-top: 20px;
+    color: #333;
+}
+
+.register-container a {
+    color: #dd5757;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
