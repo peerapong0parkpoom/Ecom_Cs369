@@ -4,6 +4,7 @@ const cors = require('cors');
 const authRoute = require('./route/authRoute'); 
 const connectToMSSQLDatabase = require('./config/productDatabase'); 
 
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -20,6 +21,7 @@ connectToMSSQLDatabase()
 
 // Routes
 app.use('/api', authRoute); 
+
 
 // Default route
 app.get('/', (req, res) => {

@@ -5,7 +5,7 @@ class ProductController {
     this.clothesModel = new ClothesModel({
       user: 'sa', 
       password: 'data1234', 
-      server: 'NICHAREE-CHUACH\\SQLEXPRESS',
+      server: 'NICHAREE-CHUACHART',
       database: 'ProductClothesDB',
       pool: {
         max: 10,
@@ -13,7 +13,7 @@ class ProductController {
         idleTimeoutMillis: 30000
       },
       options: {
-        encrypt: true, // For Azure
+        encrypt: false, 
         trustServerCertificate: true
       }
     });
@@ -62,4 +62,3 @@ class ProductController {
 }
 
 module.exports = ProductController;
-

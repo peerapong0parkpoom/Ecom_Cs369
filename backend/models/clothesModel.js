@@ -1,4 +1,3 @@
-
 const mssql = require('mssql');
 
 class ClothesModel {
