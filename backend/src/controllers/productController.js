@@ -3,18 +3,18 @@ const ClothesModel = require('../models/clothesModel');
 class ProductController {
   constructor() {
     this.clothesModel = new ClothesModel({
-      user: 'sa', 
-      password: 'data1234', 
-      server: 'NICHAREE-CHUACH\\SQLEXPRESS',
-      database: 'ProductClothesDB',
+      server: 'DESKTOP-PP321HB',
+      user: 'sa',
+      password: 'P@ssw0rd',
+      database: 'PRODUCT',
       pool: {
         max: 10,
         min: 0,
         idleTimeoutMillis: 30000
       },
       options: {
-        encrypt: true, // For Azure
-        trustServerCertificate: true
+          encrypt: true, // For Azure
+          trustServerCertificate: true
       }
     });
   }
@@ -25,7 +25,7 @@ class ProductController {
       res.json(clothes);
     } catch (error) {
       console.error(error);
-      res.status(500).send('เกิดข้อผิดพลาด');
+      res.status(500).send('Server error');
     }
   }
 
@@ -34,13 +34,13 @@ class ProductController {
     try {
       const clothes = await this.clothesModel.getClothesById(productId);
       if (!clothes) {
-        res.status(404).send('ไม่พบสินค้า');
+        res.status(404).send('Product not found');
         return;
       }
       res.json(clothes);
     } catch (error) {
       console.error(error);
-      res.status(500).send('เกิดข้อผิดพลาด');
+      res.status(500).send('Server error');
     }
   }
 
@@ -53,10 +53,10 @@ class ProductController {
     };
     try {
       await this.clothesModel.addClothes(newClothes);
-      res.status(201).send('เพิ่มสินค้าสำเร็จ');
+      res.status(201).send('Successfully added products');
     } catch (error) {
       console.error(error);
-      res.status(500).send('เกิดข้อผิดพลาด');
+      res.status(500).send('Server error');
     }
   }
 }
