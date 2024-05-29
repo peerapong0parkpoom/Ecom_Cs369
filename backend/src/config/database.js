@@ -2,10 +2,10 @@ const sql = require("mssql");
 
 // Database configuration
 const dbConfig = {
-  server: 'DESKTOP-QL0GKHM',
-  user: 'sa',
-  password: 'P@ssw0rd',
-  database: 'PRODUCT',
+  server: 'database-mssql.cpigeig4s2kj.us-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: 'password',
+  database: 'PRODUCTS',
   pool: {
     max: 10,
     min: 0,
