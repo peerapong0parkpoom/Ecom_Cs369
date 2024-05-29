@@ -11,18 +11,30 @@ const AddProduct = () => {
     const navigate = useNavigate();
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const product = {
-            productName,
-            price,
-            size,
-            image
-        };
-        console.log(product);
-        // Add logic to send the product to the server
+        const formData = new FormData();
+        formData.append('productName', productName);
+        formData.append('price', price);
+        formData.append('size', size);
+        formData.append('image', image);
 
-        navigate("/");
+        try {
+            const response = await fetch('http://localhost:4000/api/v1/products', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                navigate("/");
+            } else {
+                console.error('Failed to add product');
+            }
+        } catch (error) {
+            console.error('Error adding product:', error);
+        }
     };
 
     // Handle image selection

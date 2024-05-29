@@ -3,7 +3,7 @@ const ClothesModel = require('../models/clothesModel');
 class ProductController {
   constructor() {
     this.clothesModel = new ClothesModel({
-      server: 'DESKTOP-PP321HB',
+      server: 'DESKTOP-QL0GKHM',
       user: 'sa',
       password: 'P@ssw0rd',
       database: 'PRODUCT',

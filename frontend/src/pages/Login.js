@@ -5,14 +5,30 @@ import './Login.css';
 const Login = ({ handleLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (username && password) {
-            const userRole = 'seller';
-            handleLogin(userRole);
-            navigate('/');
+        try {
+            const response = await fetch('http://localhost:4000/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password }),
+                credentials: 'include' // Include credentials like cookies
+            });
+            const data = await response.json();
+            if (data.success) {
+                const userRole = data.data.role; // Assuming the role is returned in the response
+                handleLogin(userRole);
+                navigate('/');
+            } else {
+                setError(data.error);
+            }
+        } catch (err) {
+            setError('Login failed. Please check your credentials and try again.');
         }
     };
 
@@ -20,6 +36,7 @@ const Login = ({ handleLogin }) => {
         <div className="login-page">
             <div className="login-container">
                 <h2>Welcome to Sweet Potato! Please log in.</h2>
+                {error && <p className="error-message">{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="login-form-group">
                         <label htmlFor="username">USERNAME</label>

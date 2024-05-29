@@ -8,7 +8,7 @@ function HomePage() {
 
     //api logic start here
     useEffect(() => {
-        fetch('http://localhost:5000/api/products')
+        fetch('http://localhost:4000/api/v1/products')
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) => console.error('Error fetching products:', error));

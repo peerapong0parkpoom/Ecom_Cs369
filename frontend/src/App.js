@@ -16,9 +16,22 @@ function App() {
         setUserRole(role);
     };
 
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setUserRole('');
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/api/v1/auth/logout', {
+                method: 'POST',
+                credentials: 'include' // Include credentials like cookies
+            });
+            const data = await response.json();
+            if (data.success) {
+                setIsLoggedIn(false);
+                setUserRole('');
+            } else {
+                console.error('Logout failed:', data.error);
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
     };
 
     return (

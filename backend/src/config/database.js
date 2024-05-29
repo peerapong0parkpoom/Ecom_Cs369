@@ -2,7 +2,7 @@ const sql = require("mssql");
 
 // Database configuration
 const dbConfig = {
-  server: 'DESKTOP-PP321HB',
+  server: 'DESKTOP-QL0GKHM',
   user: 'sa',
   password: 'P@ssw0rd',
   database: 'PRODUCT',
