@@ -3,7 +3,7 @@ const ClothesModel = require('../models/clothesModel');
 class ProductController {
   constructor() {
     this.clothesModel = new ClothesModel({
-      server: 'DESKTOP-PP321HB',
+      server: 'DESKTOP-QL0GKHM',
       user: 'sa',
       password: 'P@ssw0rd',
       database: 'PRODUCT',
@@ -46,19 +46,19 @@ class ProductController {
 
   async addProduct(req, res) {
     const newClothes = {
-      productName: req.body.productName,
-      size: req.body.size,
-      price: req.body.price,
-      imageUrl: req.body.imageUrl,
+        productName: req.body.productName,
+        size: req.body.size,
+        price: req.body.price,
+        imageUrl: req.body.imageUrl,
     };
     try {
-      await this.clothesModel.addClothes(newClothes);
-      res.status(201).send('Successfully added products');
+        await this.clothesModel.addClothes(newClothes);
+        res.status(201).json({ success: true, message: 'Product added successfully' });
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Server error');
+        console.error('Error adding product:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
     }
-  }
+}
 }
 
 module.exports = ProductController;

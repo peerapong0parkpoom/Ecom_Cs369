@@ -15,6 +15,7 @@ function HomePage() {
     }, []);
 
     const handleDetailClick = (id) => {
+        console.log("this id show :" , id);
         navigate(`/product/${id}`);
     };
 
@@ -22,11 +23,11 @@ function HomePage() {
         <div className="marketplace">
             {products.map((product) => (
                 <div key={product.id} className="product-card">
-                    <div>{product.image}</div>
+                    <div><img src={product.image_url} alt={product.product_name} /></div>
                     <h3>{product.productName}</h3>
                     <p>Price: ${product.price}</p>
                     <p>Size: {product.size}</p>
-                    <button onClick={() => handleDetailClick(product.id)}>Detail</button>
+                    <button onClick={() => handleDetailClick(product.product_id)}>Detail</button>
                 </div>
             ))}
         </div>

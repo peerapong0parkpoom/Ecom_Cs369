@@ -17,11 +17,11 @@ const Login = ({ handleLogin }) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ username, password }),
-                credentials: 'include' // Include credentials like cookies
+                credentials: 'include'
             });
             const data = await response.json();
             if (data.success) {
-                const userRole = data.data.role; // Assuming the role is returned in the response
+                const userRole = 'seller';
                 handleLogin(userRole);
                 navigate('/');
             } else {

@@ -6,44 +6,46 @@ const AddProduct = () => {
     const [productName, setProductName] = useState('');
     const [price, setPrice] = useState('');
     const [size, setSize] = useState('XL');
-    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
     const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
 
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('productName', productName);
-        formData.append('price', price);
-        formData.append('size', size);
-        formData.append('image', image);
+        const product = {
+            productName,
+            price,
+            size,
+            imageUrl // Use the image URL instead of a file
+        };
 
         try {
             const response = await fetch('http://localhost:4000/api/v1/products', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(product)
             });
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                console.log('Product added successfully:', data);
                 navigate("/");
             } else {
-                console.error('Failed to add product');
+                const errorData = await response.json();
+                console.error('Failed to add product:', errorData);
             }
         } catch (error) {
             console.error('Error adding product:', error);
         }
     };
 
-    // Handle image selection
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-            setImagePreview(URL.createObjectURL(file));
-        }
+    const handleImageUrlChange = (e) => {
+        const url = e.target.value;
+        setImageUrl(url);
+        setImagePreview(url); // Show the URL image preview
     };
 
     const handleCancel = () => {
@@ -74,8 +76,8 @@ const AddProduct = () => {
                         </select>
                     </div>
                     <div className="add-product-form-group">
-                        <label htmlFor="image">Select image</label>
-                        <input type="file" id="image" name="image" onChange={handleImageChange} />
+                        <label htmlFor="imageUrl">Image URL</label>
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter the Image URL" value={imageUrl} onChange={handleImageUrlChange} />
                     </div>
                     <div className="add-product-form-buttons">
                         <button type="submit" className="add-product-button">Add</button>
