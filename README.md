@@ -6,6 +6,7 @@
 หมายเหตุ branch ที่ใช้ในการ deploy และ เป็นเวอร์ชันที่เสร็จสิ้นคือ frontend-edit
 
 **script ที่ใช้ในการ deploy**   
+
 #!/bin/bash
 
 # Update the instance
