@@ -3,7 +3,7 @@
 2. นางสาว ณัฐชยา ภวพงศ์สุภัทร 6309681457 (NatchayaF)
 3. นางสาว ณิชารีย์ เชื้อชาติ 6309681648 (eerahcin, NichareeC)
    
-หมายเหตุ branch ที่ใช้ในการ deploy และ เป็นเวอร์ชันที่เสร็จสิ้นคือ frontend-edit
+หมายเหตุ branch ที่ใช้ในการ deploy และ เป็นเวอร์ชันที่เสร็จสิ้นคือ front-recheck
 
 **script ที่ใช้ในการ deploy**   
 
@@ -31,7 +31,7 @@ sudo npm install pm2 -g
 cd /home/ec2-user
 
 # Clone the repository
-git clone -b frontend-edit https://github.com/peerapong0parkpoom/Ecom_Cs369.git
+git clone -b front-recheck https://github.com/peerapong0parkpoom/Ecom_Cs369.git
 
 # Navigate to the project directory
 cd Ecom_Cs369/backend
