@@ -7,7 +7,7 @@ function ProductDetailPage() {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/api/v1/products/${id}`) 
+        fetch(`/api/v1/products/${id}`) 
             .then((response) => response.json())
             .then((data) => setProduct(data))
             .catch((error) => console.error('Error fetching product:', error));
