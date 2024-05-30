@@ -8,7 +8,7 @@ function HomePage() {
 
     //api logic start here
     useEffect(() => {
-        fetch('/api/v1/products')
+        fetch('http://localhost:4000/api/v1/products')
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) => console.error('Error fetching products:', error));
@@ -24,9 +24,8 @@ function HomePage() {
             {products.map((product) => (
                 <div key={product.id} className="product-card">
                     <div><img src={product.image_url} alt={product.product_name} /></div>
-                    <h3>{product.productName}</h3>
+                    <h3>{product.product_name}</h3>
                     <p>Price: ${product.price}</p>
-                    <p>Size: {product.size}</p>
                     <button onClick={() => handleDetailClick(product.product_id)}>Detail</button>
                 </div>
             ))}

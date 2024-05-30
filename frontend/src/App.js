@@ -18,7 +18,7 @@ function App() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('/api/v1/auth/logout', {
+            const response = await fetch('http://localhost:4000/api/v1/auth/logout', {
                 method: 'GET',
                 credentials: 'include' // Include credentials like cookies
             });
